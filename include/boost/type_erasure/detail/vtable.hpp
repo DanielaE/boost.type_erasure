@@ -251,11 +251,19 @@ struct BOOST_PP_CAT(vtable_storage, N)
     template<class Bindings, class Src>
     void convert_from(const Src& src)
     {
-        BOOST_PP_REPEAT(N, BOOST_TYPE_ERASURE_CONVERT_ELEMENT, ~)
+    BOOST_PP_REPEAT(N, BOOST_TYPE_ERASURE_CONVERT_ELEMENT, ~)
+#if N == 0
+    (void)src;
+#endif
     }
 
     bool operator==(const BOOST_PP_CAT(vtable_storage, N)& other) const
-    { return true BOOST_PP_REPEAT(N, BOOST_TYPE_ERASURE_VTABLE_COMPARE, ~); }
+    {
+    return true BOOST_PP_REPEAT(N, BOOST_TYPE_ERASURE_VTABLE_COMPARE, ~);
+#if N == 0
+    (void)other;
+#endif
+    }
 };
 
 template<>
