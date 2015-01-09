@@ -19,4 +19,5 @@ int main()
 {
     const any< ::boost::mpl::vector<copy_constructible<>, typeid_<> > > y(2);
     int i = *any_cast<int*>(&y);
+    (void)i;
 }

@@ -21,6 +21,10 @@
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
 
+#ifdef BOOST_MSVC
+#  pragma warning(disable: 4521) // multiple copy constructors specified
+#endif
+
 using namespace boost::type_erasure;
 
 template<class T = _self>
