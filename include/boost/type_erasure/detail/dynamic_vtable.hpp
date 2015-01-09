@@ -25,6 +25,11 @@
 #include <boost/mpl/index_of.hpp>
 #include <typeinfo>
 
+#if defined(BOOST_MSVC)
+# pragma warning(push)
+# pragma warning(disable: 4100) // unreferenced formal parameter
+#endif
+
 namespace boost {
 namespace type_erasure {
 namespace detail {
@@ -182,5 +187,9 @@ struct make_dynamic_vtable
 }
 }
 }
+
+#if defined(BOOST_MSVC)
+# pragma warning(pop)
+#endif
 
 #endif
